@@ -1,0 +1,72 @@
+{
+    "name": "opencvjs-minmax",
+    "version": "0.0.1",
+    "private": true,
+    "description": "",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "engines": {
+        "node": ">=22"
+    },
+    "author": "bn-l",
+    "scripts": {
+        "dev": "vite dev",
+        "prebuild": "tsx scripts/copy_types.ts",
+        "build": "vite build && npm run package",
+        "preview": "vite preview",
+        "run:file": "tsx",
+        "package": "svelte-kit sync && svelte-package && publint",
+        "prepublishOnly": "npm run package",
+        "test": "npm run test:integration && npm run test:unit",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+        "test:integration": "playwright test",
+        "test:unit": "vitest",
+        "lint": "prettier --check .",
+        "format": "prettier --write ."
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "!dist/**/*.test.*",
+        "!dist/**/*.spec.*"
+    ],
+    "devDependencies": {
+        "@antfu/eslint-config": "^2.25.1",
+        "@playwright/test": "^1.28.1",
+        "@sveltejs/adapter-auto": "^3.0.0",
+        "@sveltejs/kit": "^2.0.0",
+        "@sveltejs/package": "^2.0.0",
+        "@sveltejs/vite-plugin-svelte": "^3.0.0",
+        "@techstark/opencv-js": "^4.10.0-release.1",
+        "@types/eslint": "^9.6.0",
+        "@types/node": "^22.5.1",
+        "bumpp": "^9.5.1",
+        "eslint": "^9.8.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-svelte": "^2.36.0",
+        "globals": "^15.0.0",
+        "prettier-plugin-organize-imports": "^4.0.0",
+        "prettier-plugin-svelte": "^3.1.2",
+        "prettier-plugin-tailwindcss": "^0.6.6",
+        "publint": "^0.2.0",
+        "svelte": "^4.2.7",
+        "svelte-check": "^3.6.0",
+        "tsx": "^4.19.0",
+        "typescript": "^5.0.0",
+        "typescript-eslint": "^8.1.0",
+        "unocss": "^0.62.1",
+        "vite": "^5.0.11",
+        "vitest": "^2.0.0"
+    },
+    "overrides": {
+        "svelte-eslint-parser": "^0.41.0",
+        "eslint": "^9.8.0"
+    }
+}
